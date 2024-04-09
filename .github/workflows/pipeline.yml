@@ -37,7 +37,7 @@ jobs:
     - name: Install NPM dependencies
       run: npm install
     - name: Install Playwright
-      run: npm init playwright@latest
+      run: npx playwright install
     - name: Start the application
       run: npm start & # & пуска процеса в бекграунда, иначе ще си цикли до тук
     - name: Run the ui unit tests
