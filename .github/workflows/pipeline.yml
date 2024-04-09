@@ -43,6 +43,7 @@ jobs:
     - name: Run the ui unit tests
       run: npm run test:ui
   deploy:
+    needs: run_ui_test
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
