@@ -23,3 +23,22 @@ jobs:
       run: npm run test:unit
     - name: Display softuni username
       run: echo "kalinamomkova"
+  run_ui_test:
+    needs: build_test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+    - name: Install NPM dependencies
+      run: npm install
+    - name: Install Playwright
+      run: npm init playwright@latest
+    - name: Start the application
+      run: npm start & # & пуска процеса в бекграунда, иначе ще си цикли до тук
+    - name: Run the ui unit tests
+      run: npm run test:ui
