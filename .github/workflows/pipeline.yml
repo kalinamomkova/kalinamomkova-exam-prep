@@ -42,3 +42,12 @@ jobs:
       run: npm start & # & пуска процеса в бекграунда, иначе ще си цикли до тук
     - name: Run the ui unit tests
       run: npm run test:ui
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.MY_RENDER_API_KEY }}
+          wait-for-success: true
